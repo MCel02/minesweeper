@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+int wys;
+int szer;
+int liczba_min;
+void wymiary(int argc, char *argv[])
+    {
+    wys         = 16;
+    szer        = 30;
+    liczba_min  = 99;
+    
+    wys   +=2;
+    szer  +=2;
+    }
