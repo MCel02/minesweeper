@@ -3,8 +3,8 @@
 #include <time.h>
 
 
-int wys;
-int szer;
+int wys; //planszy
+int szer; // planszy
 int liczba_min;
 void wymiary(int argc, char *argv[])
     {
@@ -15,3 +15,42 @@ void wymiary(int argc, char *argv[])
     wys   +=2;
     szer  +=2;
     }
+void print_plansza()
+	{
+	char *komorka[12] = 
+		{
+		"0",
+		"1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"*", //mina
+		};
+	putchar(' ');
+		
+	//drukuj współ. x
+	//drukuj współ. y
+	//drukuj komórki na osi y
+
+int fil_plansza()
+	{
+	//przydzielanie do każdej linijki
+	//dane
+	//tymczasowe zmienne dla min [srand]
+	//wypełnij minami
+	//wypełnij cyferkami
+	}
+	
+int main()
+	{
+	wymiary(argc, argv);
+	fill_plansza;
+	print_plansza;
+	return 0;
+	}
+		
+		
