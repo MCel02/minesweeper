@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-
-int wys; //planszy
-int szer; // planszy
+#define MINA 9
+#define CZY_MINA(_komorka) (_komorka == MINA)
+int **plansza;
+int **dane;
+int wys; 	//planszy
+int szer; 	//planszy
 int liczba_min;
+
 void wymiary(int argc, char *argv[])
     {
     wys         = 16;
@@ -28,28 +31,95 @@ void print_plansza()
 		"6",
 		"7",
 		"8",
-		"*", //mina
+		"*", 	//mina
 		};
 	putchar(' ');
 		
-	//drukuj współ. x
-	//drukuj współ. y
-	//drukuj komórki na osi y
+//drukuj współ. x
+	for (int x = 1; x < szer - 1; x++)
+		{
+		printf ("%d", x%10);
+		}
+	putchar ('\n');
+	
+//drukuj współ. y
+	for (int y = 1; y < wys - 1; y++)
+		{
+		printf ("%d", y%10);
+//drukuj komórki na osi y
+		for (int x = 1; x < szer - 1; x++)
+			{
+			printf ("%s", komorka[ plansza [y] [x] ]);
+			}
+		putchar('\n');
+		}
+	}
 
 int fil_plansza()
 	{
-	//przydzielanie do każdej linijki
-	//dane
-	//tymczasowe zmienne dla min [srand]
-	//wypełnij minami
-	//wypełnij cyferkami
+	plansza = malloc (wys * sizeof (int));
+	dane 	= malloc (wys * sizeof (int));
+//przydzielanie do każdej linijki
+	for (int i = 0; i < wys; i++)
+		{
+		plansza [i]	= malloc (szer * sizeof (int));
+		dane [i]	= malloc (szer * sizeof (int));
+		if (!plansza [i] || !dane [i])
+		return 1;
+		}
+//dane
+	for (int y = 0; y < wys; y++)
+		{
+		for (int x = 0; x < szer; x++)
+			{
+			dane [y] [x] = 0;
+			}
+		}
+//tymczasowe zmienne dla min [srand]
+	int wsp_a, wsp_b;
+	srand time(NULL));
+//wypełnij minami
+	for (int = 0; i < liczba_min; i++)
+		{
+		wsp_a = (rand() %  (wys-2)) + 1;
+		wsp_b = (rand() % (szer-2)) + 1;
+		if(CZY_MINA (plansza [wsp_a] [wsp_b]))
+			{
+			1--;
+			continue;
+			}
+		plansza [wsp_a] [wsp_b] = MINA;
+		}
+		
+//wypełnij cyferkami
+	for (int y = 1; y < wys-1; y++)
+		{
+		for (int x = 1; x < szer-1; x++)
+			{
+			if (!CZY_MINA (plansza [y] [x]))
+				{
+				{for (int dy = -1; dy <= 1; dy++)
+					{
+					{for (int dx = -1; dx <= 1; dx++)
+						{
+						if (dy == 0 && dx == 0) continue;
+						plansza [y] [x] += CZY_MINA (plansza [y + dy] [x + dx]);
+						}
+					}
+				}
+			}
+		}
+	return 0;
 	}
 	
-int main()
+int main(int argc, char *argv[])
 	{
 	wymiary(argc, argv);
-	fill_plansza;
-	print_plansza;
+	if((fill_plansza()) != 0)
+		{
+		return 0;
+		}
+	print_plansza();
 	return 0;
 	}
 		
