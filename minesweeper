@@ -9,7 +9,7 @@ int wys; 	//planszy
 int szer; 	//planszy
 int liczba_min;
 
-void wymiary(int argc, char *argv[])
+void wymiary (int argc, char *argv[])
     {
     wys         = 16;
     szer        = 30;
@@ -43,7 +43,7 @@ void print_plansza()
 	putchar ('\n');
 	
 //drukuj współ. y
-	for (int y = 1; y < wys - 1; y++)
+	for (int y = 1; y <  wys - 1; y++)
 		{
 		printf ("%d", y%10);
 //drukuj komórki na osi y
@@ -98,9 +98,9 @@ int fill_plansza()
 			{
 			if (!CZY_MINA (plansza [y] [x]))
 				{
-				{for (int dy = -1; dy <= 1; dy++)
+				for (int dy = -1; dy <= 1; dy++)
 					{
-					{for (int dx = -1; dx <= 1; dx++)
+					for (int dx = -1; dx <= 1; dx++)
 						{
 						if (dy == 0 && dx == 0) continue;
 						plansza [y] [x] += CZY_MINA (plansza [y + dy] [x + dx]);
@@ -122,3 +122,4 @@ int main(int argc, char *argv[])
 	print_plansza();
 	return 0;
 	}
+	
